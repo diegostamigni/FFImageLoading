@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6026ce7a-a204-40b1-97d8-72ae372e78a9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FFImageLoading.Shared.UIKit</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TaskParameterPlatformExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ImageService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Targets\UIBarItemTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Targets\UIButtonTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Targets\UIImageTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Targets\UIImageViewTarget.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Targets\UIViewTarget.cs" />
+  </ItemGroup>
+</Project>

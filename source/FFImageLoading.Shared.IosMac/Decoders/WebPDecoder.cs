@@ -55,8 +55,9 @@ namespace FFImageLoading.Decoders
             }
 
             return Task.FromResult<IDecodedImage<PImage>>(result);
-#endif
+#else
 			return Task.FromResult<IDecodedImage<PImage>>(null);
+#endif
 		}
 
 		public Configuration Configuration => ImageService.Instance.Config;

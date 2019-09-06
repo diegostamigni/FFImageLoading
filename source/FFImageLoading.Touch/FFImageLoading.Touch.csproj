@@ -36,50 +36,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Targets\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Helpers\" />
+    <PackageReference Include="WebP.Touch">
+      <Version>1.0.8</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Targets\UIBarItemTarget.cs" />
-    <Compile Include="Targets\UIButtonTarget.cs" />
-    <Compile Include="ImageService.cs" />
     <Compile Include="..\FFImageLoading.Mock\Extensions\TaskParameterExtensions.cs">
       <Link>Extensions\TaskParameterExtensions.cs</Link>
     </Compile>
-    <Compile Include="Extensions\TaskParameterPlatformExtensions.cs" />
-    <Compile Include="Targets\UIViewTarget.cs" />
-    <Compile Include="Targets\UIImageViewTarget.cs" />
-    <Compile Include="Targets\UIImageTarget.cs" />
   </ItemGroup>
-  <Import Project="..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems')" />
-  <Import Project="..\FFImageLoading.Cross\FFImageLoading.Cross.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Cross\FFImageLoading.Cross.projitems')" />
-  <Import Project="..\FFImageLoading.Shared\FFImageLoading.Shared.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared\FFImageLoading.Shared.projitems')" />
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <Policies>
-          <TextStylePolicy TabWidth="4" IndentWidth="4" RemoveTrailingWhitespace="True" NoTabsAfterNonTabs="False" EolMarker="Native" FileWidth="80" TabsToSpaces="True" scope="text/x-csharp" />
-          <CSharpFormattingPolicy IndentBlock="True" IndentBraces="False" IndentSwitchSection="True" IndentSwitchCaseSection="True" LabelPositioning="OneLess" NewLinesForBracesInTypes="True" NewLinesForBracesInMethods="True" NewLinesForBracesInProperties="True" NewLinesForBracesInAccessors="True" NewLinesForBracesInAnonymousMethods="True" NewLinesForBracesInControlBlocks="True" NewLinesForBracesInAnonymousTypes="True" NewLinesForBracesInObjectCollectionArrayInitializers="True" NewLinesForBracesInLambdaExpressionBody="True" NewLineForElse="True" NewLineForCatch="True" NewLineForFinally="True" NewLineForMembersInObjectInit="True" NewLineForMembersInAnonymousTypes="True" NewLineForClausesInQuery="True" SpacingAfterMethodDeclarationName="False" SpaceWithinMethodDeclarationParenthesis="False" SpaceBetweenEmptyMethodDeclarationParentheses="False" SpaceAfterMethodCallName="False" SpaceWithinMethodCallParentheses="False" SpaceBetweenEmptyMethodCallParentheses="False" SpaceAfterControlFlowStatementKeyword="True" SpaceWithinExpressionParentheses="False" SpaceWithinCastParentheses="False" SpaceWithinOtherParentheses="False" SpaceAfterCast="False" SpacesIgnoreAroundVariableDeclaration="False" SpaceBeforeOpenSquareBracket="False" SpaceBetweenEmptySquareBrackets="False" SpaceWithinSquareBrackets="False" SpaceAfterColonInBaseTypeDeclaration="True" SpaceAfterComma="True" SpaceAfterDot="False" SpaceAfterSemicolonsInForStatement="True" SpaceBeforeColonInBaseTypeDeclaration="True" SpaceBeforeComma="False" SpaceBeforeDot="False" SpaceBeforeSemicolonsInForStatement="False" SpacingAroundBinaryOperator="Single" WrappingPreserveSingleLine="True" WrappingKeepStatementsOnSingleLine="True" scope="text/x-csharp" />
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
   <ItemGroup>
     <ProjectReference Include="..\FFImageLoading.Common\FFImageLoading.csproj">
       <Project>{51CA3BE2-DF00-4F49-8054-E5C776992B61}</Project>
       <Name>FFImageLoading</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="WebP.Touch" Version="1.0.8" />
-  </ItemGroup>
+  <Import Project="..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems')" />
+  <Import Project="..\FFImageLoading.Cross\FFImageLoading.Cross.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Cross\FFImageLoading.Cross.projitems')" />
+  <Import Project="..\FFImageLoading.Shared\FFImageLoading.Shared.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared\FFImageLoading.Shared.projitems')" />
+  <Import Project="..\FFImageLoading.Shared.UIKit\FFImageLoading.Shared.UIKit.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

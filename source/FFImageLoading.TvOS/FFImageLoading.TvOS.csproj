@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -26,21 +26,25 @@
     <IOSDebuggerPort>34544</IOSDebuggerPort>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <MtouchVerbosity></MtouchVerbosity>
-    <MtouchLink></MtouchLink>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
+    <MtouchLink>
+    </MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,24 +52,12 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.TVOS" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Targets\" />
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ImageService.cs" />
-    <Compile Include="Targets\UIBarItemTarget.cs" />
-    <Compile Include="Targets\UIButtonTarget.cs" />
-    <Compile Include="Targets\UIImageTarget.cs" />
-    <Compile Include="Targets\UIImageViewTarget.cs" />
-    <Compile Include="Targets\UIViewTarget.cs" />
     <Compile Include="..\FFImageLoading.Mock\Extensions\TaskParameterExtensions.cs">
       <Link>Extensions\TaskParameterExtensions.cs</Link>
     </Compile>
-    <Compile Include="Extensions\TaskParameterPlatformExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FFImageLoading.Common\FFImageLoading.csproj">
@@ -76,5 +68,6 @@
   <Import Project="..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared.IosMac\FFImageLoading.Shared.IosMac.projitems')" />
   <Import Project="..\FFImageLoading.Shared\FFImageLoading.Shared.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Shared\FFImageLoading.Shared.projitems')" />
   <Import Project="..\FFImageLoading.Cross\FFImageLoading.Cross.projitems" Label="Shared" Condition="Exists('..\FFImageLoading.Cross\FFImageLoading.Cross.projitems')" />
+  <Import Project="..\FFImageLoading.Shared.UIKit\FFImageLoading.Shared.UIKit.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
 </Project>
