@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using FFImageLoading.Views;
 
-#if __IOS__
+#if __IOS__ || __TVOS__
 using Foundation;
 using UIKit;
 using CoreGraphics;
@@ -21,8 +21,8 @@ using Android.Content;
 namespace FFImageLoading.Cross
 {
 
-#if __IOS__
-    [Preserve(AllMembers = true)]
+#if __IOS__ || __TVOS__
+	[Preserve(AllMembers = true)]
     [Register("MvxCachedImageView")]
 #elif __ANDROID__
     [Preserve(AllMembers = true)]
@@ -32,17 +32,17 @@ namespace FFImageLoading.Cross
     /// MvxCachedImageView by Daniel Luberda
     /// </summary>
     public class MvxCachedImageView
-#if __IOS__
-        : UIImageView, ICachedImageView, INotifyPropertyChanged
+#if __IOS__ || __TVOS__
+		: UIImageView, ICachedImageView, INotifyPropertyChanged
 #elif __ANDROID__
         : Android.Widget.ImageView, ICachedImageView, INotifyPropertyChanged
 #endif
     {
-#if __IOS__
-        /// <summary>
-        /// MvxCachedImageView by Daniel Luberda
-        /// </summary>
-        public MvxCachedImageView() { Initialize(); }
+#if __IOS__ || __TVOS__
+		/// <summary>
+		/// MvxCachedImageView by Daniel Luberda
+		/// </summary>
+		public MvxCachedImageView() { Initialize(); }
         public MvxCachedImageView(IntPtr handle) : base(handle) { Initialize(); }
         public MvxCachedImageView(CGRect frame) : base(frame) { Initialize(); }
 #elif __ANDROID__

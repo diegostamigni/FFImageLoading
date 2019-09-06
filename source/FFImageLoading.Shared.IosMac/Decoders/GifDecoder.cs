@@ -17,7 +17,7 @@ using System.Threading;
 #if __MACOS__
 using AppKit;
 using PImage = AppKit.NSImage;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
 #endif
@@ -112,7 +112,7 @@ namespace FFImageLoading.Decoders
 						{
 							using (var imageRef = sourceRef.CreateThumbnail(0, options))
 							{
-#if __IOS__
+#if __IOS__ || __TVOS__
 								image = new PImage(imageRef, destScale, UIImageOrientation.Up);
 #elif __MACOS__
                                 image = new PImage(imageRef, CGSize.Empty);
@@ -120,7 +120,7 @@ namespace FFImageLoading.Decoders
 							}
 						}
 
-#if __IOS__
+#if __IOS__ || __TVOS__
 						var frames = GetFrames(sourceRef, options);
 						var delays = GetDelays(sourceRef);
 						var totalDuration = delays.Sum();
@@ -157,7 +157,7 @@ namespace FFImageLoading.Decoders
                     {
                         if (imageRef != null)
                         {
-#if __IOS__
+#if __IOS__|| __TVOS__
                         image = new PImage(imageRef, destScale, UIImageOrientation.Up);
 #elif __MACOS__
                             image = new PImage(imageRef, CGSize.Empty);
@@ -206,8 +206,8 @@ namespace FFImageLoading.Decoders
             ScaleAspectFill = (long)NSImageScaling.ProportionallyUpOrDown, //UIViewContentMode.ScaleAspectFill,
             ScaleAspectFit = (long)NSImageScaling.ProportionallyDown, //UIViewContentMode.ScaleAspectFit,
             ScaleToFill = (long)NSImageScaling.AxesIndependently //UIViewContentMode.ScaleToFill,
-#elif __IOS__
-            ScaleAspectFill = UIViewContentMode.ScaleAspectFill,
+#elif __IOS__ || __TVOS__
+			ScaleAspectFill = UIViewContentMode.ScaleAspectFill,
             ScaleAspectFit = UIViewContentMode.ScaleAspectFit,
             ScaleToFill = UIViewContentMode.ScaleToFill,
 #endif
@@ -371,8 +371,8 @@ namespace FFImageLoading.Decoders
             }
         }
 
-#if __IOS__
-        static CGImage[] GetFrames(CGImageSource source, CGImageThumbnailOptions options)
+#if __IOS__ || __TVOS__
+		static CGImage[] GetFrames(CGImageSource source, CGImageThumbnailOptions options)
         {
             var retval = new CGImage[source.ImageCount];
 

@@ -12,7 +12,7 @@ using FFImageLoading.Helpers;
 #if __MACOS__
 using AppKit;
 using PImage = AppKit.NSImage;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
 #endif
@@ -124,8 +124,8 @@ namespace FFImageLoading.DataResolvers
 
         private async Task<DataResolverResult> ResolveFromAssetCatalogAsync(string fileName, string identifier, TaskParameter parameters, CancellationToken token)
         {
-#if __IOS__
-            if (!UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
+#if __IOS__ || __TVOS__
+			if (!UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
                 return null;
 #endif
 
@@ -166,8 +166,8 @@ namespace FFImageLoading.DataResolvers
 
             try
             {
-#if __IOS__
-                await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.FromBundle(identifier)).ConfigureAwait(false);
+#if __IOS__ || __TVOS__
+				await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.FromBundle(identifier)).ConfigureAwait(false);
 #elif __MACOS__
                 await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.ImageNamed(identifier)).ConfigureAwait(false);
 #endif
@@ -178,8 +178,8 @@ namespace FFImageLoading.DataResolvers
             {
                 try
                 {
-#if __IOS__
-                    await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.FromBundle(fileName)).ConfigureAwait(false);
+#if __IOS__ || __TVOS__
+					await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.FromBundle(fileName)).ConfigureAwait(false);
 #elif __MACOS__
 					await ImageService.Instance.Config.MainThreadDispatcher.PostAsync(() => image = PImage.ImageNamed(fileName)).ConfigureAwait(false);
 #endif

@@ -16,7 +16,7 @@ using CoreGraphics;
 #if __MACOS__
 using AppKit;
 using PImage = AppKit.NSImage;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
 #endif
@@ -118,8 +118,8 @@ namespace FFImageLoading.Work
 
             if (decoded.IsAnimated)
             {
-#if __IOS__
-                result = PImage.CreateAnimatedImage(decoded.AnimatedImages
+#if __IOS__ || __TVOS__
+				result = PImage.CreateAnimatedImage(decoded.AnimatedImages
                                                     .Select(v => v.Image)
                                                     .Where(v => v?.CGImage != null).ToArray(), decoded.AnimatedImages.Sum(v => v.Delay) / 1000f);
 #elif __MACOS__

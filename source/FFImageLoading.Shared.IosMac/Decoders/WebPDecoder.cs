@@ -10,20 +10,25 @@ using FFImageLoading.Extensions;
 using AppKit;
 using PImage = AppKit.NSImage;
 using WebPCodec = WebP.Mac.WebPCodec;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
+#endif
+#if __IOS__
 using WebPCodec = WebP.Touch.WebPCodec;
 #endif
 
 namespace FFImageLoading.Decoders
 {
     public class WebPDecoder : IDecoder<PImage>
-    {
+	{
+#if __IOS__
         WebPCodec _decoder;
+#endif
 
-        public Task<IDecodedImage<PImage>> DecodeAsync(Stream stream, string path, ImageSource source, ImageInformation imageInformation, TaskParameter parameters)
-        {
+		public Task<IDecodedImage<PImage>> DecodeAsync(Stream stream, string path, ImageSource source, ImageInformation imageInformation, TaskParameter parameters)
+		{
+#if __IOS__
             if (_decoder == null)
                 _decoder = new WebPCodec();
 
@@ -50,9 +55,11 @@ namespace FFImageLoading.Decoders
             }
 
             return Task.FromResult<IDecodedImage<PImage>>(result);
-        }
+#endif
+			return Task.FromResult<IDecodedImage<PImage>>(null);
+		}
 
-        public Configuration Configuration => ImageService.Instance.Config;
+		public Configuration Configuration => ImageService.Instance.Config;
 
         public IMiniLogger Logger => ImageService.Instance.Config.Logger;
     }

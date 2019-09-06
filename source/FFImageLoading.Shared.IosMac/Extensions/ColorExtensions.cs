@@ -2,7 +2,7 @@
 #if __MACOS__
 using AppKit;
 using PColor = AppKit.NSColor;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PColor = UIKit.UIColor;
 #endif
@@ -32,8 +32,8 @@ namespace FFImageLoading
                         var b = (byte)(cuint & 0xff);
 #if __MACOS__
                         color = PColor.FromRgba(r, g, b, a);
-#elif __IOS__
-                        color = PColor.FromRGBA(r, g, b, a);
+#elif __IOS__ || __TVOS__
+						color = PColor.FromRGBA(r, g, b, a);
 #endif
                         break;
                     }
@@ -45,8 +45,8 @@ namespace FFImageLoading
                         var b = (byte)(cuint & 0xff);
 #if __MACOS__
                         color = PColor.FromRgba(r, g, b, (byte)255);
-#elif __IOS__
-                        color = PColor.FromRGBA(r, g, b, (byte)255);
+#elif __IOS__ || __TVOS__
+						color = PColor.FromRGBA(r, g, b, (byte)255);
 #endif
                         break;
                     }
@@ -63,8 +63,8 @@ namespace FFImageLoading
                         b = (byte)(b << 4 | b);
 #if __MACOS__
                         color = PColor.FromRgba(r, g, b, a);
-#elif __IOS__
-                        color = PColor.FromRGBA(r, g, b, a);
+#elif __IOS__ || __TVOS__
+						color = PColor.FromRGBA(r, g, b, a);
 #endif
                         break;
                     }
@@ -80,8 +80,8 @@ namespace FFImageLoading
 
 #if __MACOS__
                         color = PColor.FromRgba(r, g, b, (byte)255);
-#elif __IOS__
-                        color = PColor.FromRGBA(r, g, b, (byte)255);
+#elif __IOS__ || __TVOS__
+						color = PColor.FromRGBA(r, g, b, (byte)255);
 #endif
                         break;
                     }

@@ -5,7 +5,7 @@ using FFImageLoading.Work;
 #if __MACOS__
 using AppKit;
 using PImage = AppKit.NSImage;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
 #endif
@@ -41,8 +41,8 @@ namespace FFImageLoading.Extensions
             image.Draw(new CGRect(CGPoint.Empty, newSize), CGRect.Empty, NSCompositingOperation.SourceOver, 1.0f);
             resizedImage.UnlockFocus();
             return resizedImage;
-#elif __IOS__
-            UIGraphics.BeginImageContextWithOptions(newSize, false, 0);
+#elif __IOS__ || __TVOS__
+			UIGraphics.BeginImageContextWithOptions(newSize, false, 0);
 
             try
             {
@@ -76,8 +76,8 @@ namespace FFImageLoading.Extensions
 
         public static System.IO.Stream AsPngStream(this PImage image)
         {
-#if __IOS__
-            return image.AsPNG()?.AsStream();
+#if __IOS__ || __TVOS__
+			return image.AsPNG()?.AsStream();
 #elif __MACOS__
             var imageRep = new NSBitmapImageRep(image.AsTiff());
             return imageRep.RepresentationUsingTypeProperties(NSBitmapImageFileType.Png)
@@ -87,8 +87,8 @@ namespace FFImageLoading.Extensions
 
         public static System.IO.Stream AsJpegStream(this PImage image, int quality = 80)
         {
-#if __IOS__
-            return image.AsJPEG(quality / 100f).AsStream();
+#if __IOS__ || __TVOS__
+			return image.AsJPEG(quality / 100f).AsStream();
 #elif __MACOS__
             // todo: jpeg quality?
             var imageRep = new NSBitmapImageRep(image.AsTiff());

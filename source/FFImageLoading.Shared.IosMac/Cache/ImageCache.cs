@@ -9,7 +9,7 @@ using System.Linq;
 #if __MACOS__
 using AppKit;
 using PImage = AppKit.NSImage;
-#elif __IOS__
+#elif __IOS__ || __TVOS__
 using UIKit;
 using PImage = UIKit.UIImage;
 #endif
