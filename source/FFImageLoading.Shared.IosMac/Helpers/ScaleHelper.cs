@@ -27,7 +27,7 @@ namespace FFImageLoading.Helpers
             var dispatcher = ImageService.Instance.Config.MainThreadDispatcher;
             await dispatcher.PostAsync(() =>
             {
-#if __IOS__
+#if __IOS__ || __TVOS__
                 _scale = UIKit.UIScreen.MainScreen.Scale;
 #elif __MACOS__
                 _scale = AppKit.NSScreen.MainScreen.BackingScaleFactor;
