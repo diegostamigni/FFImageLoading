@@ -111,7 +111,7 @@
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FFImageLoading.Common\FFImageLoading.csproj">
-      <Project>{B2345F1F-E2A7-43ED-97A4-315F9AE25EEC}</Project>
+      <Project>{51CA3BE2-DF00-4F49-8054-E5C776992B61}</Project>
       <Name>FFImageLoading</Name>
     </ProjectReference>
   </ItemGroup>
